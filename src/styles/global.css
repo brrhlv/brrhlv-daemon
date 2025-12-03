@@ -1,135 +1,52 @@
 @import "tailwindcss";
 
-/* Custom Fonts */
-@font-face {
-  font-family: 'Concourse';
-  src: url('/fonts/concourse_3_regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
+/* Google Fonts - Bebas Neue, Fira Sans, Fira Code */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Code:wght@400;500;600&family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
 
-@font-face {
-  font-family: 'Concourse';
-  src: url('/fonts/concourse_3_bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Concourse Medium';
-  src: url('/fonts/concourse_4_regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Concourse Medium';
-  src: url('/fonts/concourse_4_bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Valkyrie';
-  src: url('/fonts/valkyrie_a_regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Valkyrie';
-  src: url('/fonts/valkyrie_a_bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Valkyrie';
-  src: url('/fonts/valkyrie_a_italic.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Advocate';
-  src: url('/fonts/advocate_34_narr_reg.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Advocate Wide';
-  src: url('/fonts/advocate_54_wide_reg.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Heliotrope';
-  src: url('/fonts/heliotrope_3_regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Heliotrope Caps';
-  src: url('/fonts/heliotrope_3_caps_regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Tailwind v4 Theme - Tokyo Night Storm / Daemon Colors */
+/* Tailwind v4 Theme - Cyberpunk Goth (brrhlv Brand) */
 @theme {
-  /* Brand Colors - Cyan/Teal for Daemon */
-  --color-brand: #7dcfff;
-  --color-brand-light: #89ddff;
-  --color-brand-dark: #0db9d7;
-  --color-brand-glow: rgba(125, 207, 255, 0.4);
+  /* Brand Colors - Purple/Burgundy Cyberpunk */
+  --color-brand: #7C3AED;
+  --color-brand-light: #A78BFA;
+  --color-brand-dark: #5B21B6;
+  --color-brand-glow: rgba(124, 58, 237, 0.4);
 
-  /* Accent - Purple (Tokyo Night) */
-  --color-accent: #9d7cd8;
-  --color-accent-light: #bb9af7;
-  --color-accent-dark: #7c3aed;
+  /* Secondary - Burgundy */
+  --color-secondary: #881337;
+  --color-secondary-light: #9F1239;
+  --color-secondary-glow: rgba(136, 19, 55, 0.3);
 
-  /* Secondary Accent - Green */
-  --color-success: #9ece6a;
-  --color-warning: #e0af68;
-  --color-error: #f7768e;
+  /* Accent - Light Purple */
+  --color-accent: #A78BFA;
+  --color-accent-light: #C4B5FD;
+  --color-accent-dark: #7C3AED;
 
-  /* Background - Tokyo Night Storm */
-  --color-bg-primary: #0a0a0f;
-  --color-bg-secondary: #1a1b26;
-  --color-bg-tertiary: #1f2335;
-  --color-bg-elevated: #24283b;
+  /* Status Colors */
+  --color-success: #22C55E;
+  --color-warning: #EAB308;
+  --color-error: #EF4444;
 
-  /* Text */
-  --color-text-primary: #c0caf5;
-  --color-text-secondary: #a9b1d6;
-  --color-text-tertiary: #565f89;
+  /* Background - Dark with purple tint */
+  --color-bg-primary: #0A0A0F;
+  --color-bg-secondary: #12121A;
+  --color-bg-tertiary: #1A1A24;
+  --color-bg-elevated: #22222E;
+
+  /* Text - Purple-tinted grays */
+  --color-text-primary: #F5F5F5;
+  --color-text-secondary: #A3A3A3;
+  --color-text-tertiary: #71717A;
 
   /* Borders */
-  --color-border-subtle: rgba(59, 66, 97, 0.5);
-  --color-border-default: #3b4261;
-  --color-border-emphasis: rgba(125, 207, 255, 0.3);
+  --color-border-subtle: rgba(124, 58, 237, 0.15);
+  --color-border-default: rgba(124, 58, 237, 0.3);
+  --color-border-emphasis: rgba(167, 139, 250, 0.5);
 
   /* Fonts */
-  --font-display: 'Advocate Wide', 'Advocate', sans-serif;
-  --font-heading: 'Concourse Medium', 'Concourse', sans-serif;
-  --font-body: 'Valkyrie', Georgia, serif;
-  --font-accent: 'Heliotrope Caps', 'Heliotrope', sans-serif;
-  --font-sans: 'Concourse', system-ui, sans-serif;
-  --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-heading: 'Bebas Neue', sans-serif;
+  --font-body: 'Fira Sans', system-ui, sans-serif;
+  --font-mono: 'Fira Code', 'SF Mono', monospace;
 }
 
 /* Base Styles */
@@ -154,8 +71,8 @@ body {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -164,20 +81,22 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-border-default);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-tertiary);
+  background: var(--color-brand);
 }
 
 /* Utility Classes */
 .font-display {
   font-family: var(--font-display);
+  letter-spacing: 0.04em;
 }
 
 .font-heading {
   font-family: var(--font-heading);
+  letter-spacing: 0.03em;
 }
 
 .font-body {
@@ -188,6 +107,7 @@ body {
   font-family: var(--font-mono);
 }
 
+/* Text Gradients */
 .text-gradient {
   background: linear-gradient(135deg, var(--color-brand-light) 0%, var(--color-brand) 50%, var(--color-brand-dark) 100%);
   -webkit-background-clip: text;
@@ -202,26 +122,69 @@ body {
   background-clip: text;
 }
 
+/* Scan Line Effect (from brrhlv) */
+.bg-scanlines {
+  position: relative;
+}
+
+.bg-scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.03) 2px,
+    rgba(255, 255, 255, 0.03) 4px
+  );
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Noise Texture */
 .bg-noise {
   position: relative;
 }
 
-.bg-noise::before {
+.bg-noise::after {
   content: '';
   position: absolute;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  opacity: 0.03;
+  opacity: 0.02;
   pointer-events: none;
 }
 
-/* Glow Effect */
+/* Glow Effects */
 .glow {
   box-shadow: 0 0 40px var(--color-brand-glow);
 }
 
+.glow-sm {
+  box-shadow: 0 0 20px var(--color-brand-glow);
+}
+
 .glow-text {
   text-shadow: 0 0 40px var(--color-brand-glow);
+}
+
+/* Card Glow on Hover */
+.card-glow {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-glow:hover {
+  box-shadow: 0 0 30px var(--color-brand-glow);
+  border-color: var(--color-border-emphasis);
+}
+
+/* Grid Background */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 /* Animated Background Orbs */
@@ -230,71 +193,108 @@ body {
   border-radius: 50%;
   will-change: transform, opacity;
   transform: translate3d(0, 0, 0);
-  filter: blur(80px);
+  filter: blur(100px);
 }
 
-.bg-orb-1 {
-  width: 600px;
-  height: 600px;
+.bg-orb-purple {
+  width: 500px;
+  height: 500px;
   background: radial-gradient(circle, var(--color-brand-glow) 0%, transparent 70%);
-  animation: orb1-float 12s ease-in-out infinite;
+  animation: orb-float-1 15s ease-in-out infinite;
 }
 
-.bg-orb-2 {
+.bg-orb-burgundy {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(157, 124, 216, 0.3) 0%, transparent 70%);
-  animation: orb2-float 15s ease-in-out infinite;
+  background: radial-gradient(circle, var(--color-secondary-glow) 0%, transparent 70%);
+  animation: orb-float-2 18s ease-in-out infinite;
 }
 
-@keyframes orb1-float {
+@keyframes orb-float-1 {
   0%, 100% {
     transform: translate3d(0, 0, 0);
-    opacity: 0.35;
+    opacity: 0.3;
   }
   33% {
-    transform: translate3d(15%, 8%, 0);
-    opacity: 0.5;
+    transform: translate3d(10%, 5%, 0);
+    opacity: 0.4;
   }
   66% {
-    transform: translate3d(5%, -5%, 0);
-    opacity: 0.4;
+    transform: translate3d(-5%, -8%, 0);
+    opacity: 0.35;
   }
 }
 
-@keyframes orb2-float {
+@keyframes orb-float-2 {
   0%, 100% {
     transform: translate3d(0, 0, 0);
-    opacity: 0.25;
+    opacity: 0.2;
   }
   50% {
-    transform: translate3d(-10%, 15%, 0);
-    opacity: 0.4;
+    transform: translate3d(-8%, 10%, 0);
+    opacity: 0.3;
   }
 }
 
+/* Pulse Animation */
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
 }
 
 .animate-pulse-slow {
-  animation: pulse 2s infinite;
+  animation: pulse 2s ease-in-out infinite;
 }
 
-/* Grid background */
-.bg-grid {
-  background-image:
-    linear-gradient(rgba(125, 207, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(125, 207, 255, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
+/* Terminal Cursor Blink */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Status Indicator */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-dot-connected {
+  background-color: var(--color-success);
+  box-shadow: 0 0 8px var(--color-success);
+}
+
+.status-dot-offline {
+  background-color: var(--color-error);
+  box-shadow: 0 0 8px var(--color-error);
+}
+
+/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .bg-orb {
+  .bg-orb,
+  .bg-orb-purple,
+  .bg-orb-burgundy {
     animation: none;
   }
-  .animate-pulse-slow {
+  .animate-pulse-slow,
+  .animate-blink {
     animation: none;
   }
+}
+
+/* Vignette Effect */
+.vignette {
+  position: relative;
+}
+
+.vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, var(--color-bg-primary) 100%);
+  pointer-events: none;
 }

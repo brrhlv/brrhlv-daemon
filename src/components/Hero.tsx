@@ -6,31 +6,32 @@ export function Hero() {
   const [location, setLocation] = useState('Loading...');
 
   useEffect(() => {
+    // Fetch location from daemon.md
     async function fetchLocation() {
       try {
-        const response = await fetch('https://mcp.daemon.danielmiessler.com', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            jsonrpc: '2.0',
-            method: 'tools/call',
-            params: { name: 'get_current_location', arguments: {} },
-            id: 1
-          })
-        });
-        const data = await response.json();
-        if (data.result?.content?.[0]?.text) {
-          setLocation(data.result.content[0].text);
+        const response = await fetch('/daemon.md');
+        if (response.ok) {
+          const text = await response.text();
+          const match = text.match(/\[CURRENT_LOCATION\]\s*\n\s*(.+)/);
+          if (match) {
+            setLocation(match[1].trim());
+          } else {
+            setLocation('Las Vegas, Nevada');
+          }
         }
       } catch {
-        setLocation('Bay Area');
+        setLocation('Las Vegas, Nevada');
       }
     }
     fetchLocation();
   }, []);
+
   return (
     <section className="relative pt-28 pb-6 px-6">
-      <div className="max-w-4xl mx-auto text-center">
+      {/* Scan lines overlay */}
+      <div className="absolute inset-0 bg-scanlines pointer-events-none" />
+
+      <div className="max-w-4xl mx-auto text-center relative">
         {/* Title + Badge inline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -38,12 +39,12 @@ export function Hero() {
           transition={{ duration: 0.5 }}
           className="flex items-center justify-center gap-4 mb-3"
         >
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl tracking-tight">
-            <span className="text-gradient">DAEMON</span>
+          <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl tracking-wider">
+            <span className="text-gradient glow-text">DAEMON</span>
           </h1>
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand/10 border border-brand/20">
-            <span className="w-2 h-2 rounded-full bg-success animate-pulse-slow" />
-            <span className="font-mono text-xs text-brand">LIVE</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-brand/10 border border-brand/30">
+            <span className="status-dot status-dot-connected animate-pulse-slow" />
+            <span className="font-mono text-xs text-brand uppercase">Live</span>
           </div>
         </motion.div>
 
@@ -52,11 +53,11 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="font-heading text-lg text-text-secondary mb-3"
+          className="font-body text-lg text-text-secondary mb-3"
         >
-          Personal MCP API for{' '}
-          <a href="https://danielmiessler.com" className="text-brand hover:underline">
-            Daniel Miessler
+          Personal API for{' '}
+          <a href="https://brrh.lv" className="text-brand hover:text-brand-light transition-colors">
+            Bryan Rivera
           </a>
         </motion.p>
 
@@ -64,9 +65,10 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="font-body text-lg text-text-secondary max-w-2xl mx-auto mb-5"
+          className="font-body text-base text-text-tertiary max-w-2xl mx-auto mb-5"
         >
-          My vision of the future where technology's primary role is to enable human connection. Daemons are live views into what a person is doing and what they care about for the purpose of connecting with others with similar interests.
+          A live interface into who I am, what I'm building, and what I care about.
+          Built for both humans and AI to understand and connect.
         </motion.p>
 
         {/* Location */}
@@ -74,9 +76,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex justify-center mb-3"
+          className="flex justify-center mb-4"
         >
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand/10 border border-brand/30">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-brand/10 border border-brand/30">
             <MapPin className="w-3.5 h-3.5 text-brand" />
             <span className="font-mono text-xs text-brand">{location}</span>
           </div>
@@ -89,23 +91,23 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.25 }}
           className="flex flex-wrap items-center justify-center gap-2"
         >
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-secondary border border-border-subtle">
-            <Terminal className="w-3.5 h-3.5 text-text-tertiary" />
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-bg-secondary/80 border border-border-subtle">
+            <Terminal className="w-3.5 h-3.5 text-accent" />
             <span className="font-mono text-xs text-text-secondary">MCP</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-secondary border border-border-subtle">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-bg-secondary/80 border border-border-subtle">
             <Zap className="w-3.5 h-3.5 text-success" />
             <span className="font-mono text-xs text-text-secondary">Real-time</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bg-secondary border border-border-subtle">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-bg-secondary/80 border border-border-subtle">
             <Globe className="w-3.5 h-3.5 text-accent" />
             <span className="font-mono text-xs text-text-secondary">Public</span>
           </div>
           <a
             href="/api/"
-            className="px-4 py-1.5 rounded-lg font-heading font-medium text-xs bg-bg-secondary hover:bg-bg-tertiary text-text-secondary border border-border-subtle transition-all duration-300"
+            className="px-4 py-1.5 rounded font-display text-sm tracking-wider bg-brand/20 hover:bg-brand/30 text-brand border border-brand/30 transition-all duration-300"
           >
-            API Docs
+            API DOCS
           </a>
         </motion.div>
       </div>

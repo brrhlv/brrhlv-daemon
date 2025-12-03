@@ -5,7 +5,7 @@ The Daemon API provides programmatic access to personal information, projects, a
 ## Base URL
 
 ```
-https://daemon.danielmiessler.com
+https://daemon-eight.vercel.app
 ```
 
 ## Protocol
@@ -23,7 +23,7 @@ Currently, the API is publicly accessible. Future versions may include authentic
 Get a list of all available endpoints:
 
 ```bash
-curl -X POST https://daemon.danielmiessler.com \
+curl -X POST https://daemon-eight.vercel.app \
   -H "Content-Type: application/json" \
   -d '{
     "jsonrpc": "2.0",
@@ -37,13 +37,13 @@ curl -X POST https://daemon.danielmiessler.com \
 Execute a specific tool to retrieve data:
 
 ```bash
-curl -X POST https://daemon.danielmiessler.com \
+curl -X POST https://daemon-eight.vercel.app \
   -H "Content-Type: application/json" \
   -d '{
     "jsonrpc": "2.0",
     "method": "tools/call",
     "params": {
-      "name": "get_telos",
+      "name": "get_purpose",
       "arguments": {}
     },
     "id": 2
@@ -54,11 +54,11 @@ curl -X POST https://daemon.danielmiessler.com \
 
 | Endpoint | Description | Response Type |
 |----------|-------------|---------------|
-| `get_about` | Basic information about Daniel Miessler | Text |
+| `get_about` | Basic information about Bryan Rivera | Text |
 | `get_narrative` | Personal narrative and focus areas | Text |
 | `get_mission` | Current mission statement | Text |
 | `get_projects` | List of active projects | Text |
-| `get_telos` | Complete TELOS framework | Structured Text |
+| `get_purpose` | Personal purpose framework | Structured Text |
 | `get_favorite_books` | Recommended reading list | List |
 | `get_favorite_movies` | Film recommendations | List |
 | `get_current_location` | Current city/location | Text |
@@ -116,7 +116,7 @@ To use Daemon with MCP-compatible tools like Claude Code:
 {
   "mcpServers": {
     "daemon": {
-      "url": "https://daemon.danielmiessler.com"
+      "url": "https://daemon-eight.vercel.app"
     }
   }
 }
@@ -132,15 +132,15 @@ To use Daemon with MCP-compatible tools like Claude Code:
 import requests
 import json
 
-url = "https://daemon.danielmiessler.com"
+url = "https://daemon-eight.vercel.app"
 headers = {"Content-Type": "application/json"}
 
-# Get TELOS framework
+# Get purpose framework
 payload = {
     "jsonrpc": "2.0",
     "method": "tools/call",
     "params": {
-        "name": "get_telos",
+        "name": "get_purpose",
         "arguments": {}
     },
     "id": 1
@@ -155,7 +155,7 @@ print(data["result"]["content"][0]["text"])
 
 ```javascript
 async function getDaemonData(tool) {
-  const response = await fetch('https://daemon.danielmiessler.com', {
+  const response = await fetch('https://daemon-eight.vercel.app', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -170,14 +170,14 @@ async function getDaemonData(tool) {
       id: 1
     })
   });
-  
+
   const data = await response.json();
   return data.result.content[0].text;
 }
 
 // Usage
-const telos = await getDaemonData('get_telos');
-console.log(telos);
+const purpose = await getDaemonData('get_purpose');
+console.log(purpose);
 ```
 
 ## Updates
@@ -187,9 +187,9 @@ The Daemon API is continuously updated with new information. Check the `last_upd
 ## Support
 
 For issues or questions:
-- GitHub: [@danielmiessler](https://github.com/danielmiessler)
-- Twitter: [@danielmiessler](https://twitter.com/danielmiessler)
+- GitHub: [@brrh](https://github.com/brrh)
+- Website: [brrh.lv](https://brrh.lv)
 
 ---
 
-*The Daemon API is part of the broader vision of everything having an API, as described in "The Real Internet of Things" (2016).*
+*The Daemon API is part of the broader vision of everyone having a personal API - a way for both humans and AI to understand who you are and how to interact with you.*

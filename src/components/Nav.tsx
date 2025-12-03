@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Terminal, FileText, Target } from 'lucide-react';
+import { Terminal, FileText, Compass } from 'lucide-react';
 
 export function Nav() {
   const { scrollY } = useScroll();
@@ -29,7 +29,7 @@ export function Nav() {
         {/* Logo / Brand */}
         <a href="/" className="flex items-center gap-3 group">
           <Terminal className="w-6 h-6 text-brand" />
-          <span className="font-heading font-bold text-xl text-text-primary group-hover:text-brand transition-colors">
+          <span className="font-display text-xl tracking-wider text-text-primary group-hover:text-brand transition-colors">
             DAEMON
           </span>
         </a>
@@ -38,25 +38,25 @@ export function Nav() {
         <div className="flex items-center gap-6">
           <a
             href="/api"
-            className="flex items-center gap-2 text-text-secondary hover:text-brand transition-colors font-sans text-sm"
+            className="flex items-center gap-2 text-text-secondary hover:text-brand transition-colors font-body text-sm"
           >
             <FileText className="w-4 h-4" />
             <span className="hidden sm:inline">API Docs</span>
           </a>
           <a
             href="/telos"
-            className="flex items-center gap-2 text-text-secondary hover:text-brand transition-colors font-sans text-sm"
+            className="flex items-center gap-2 text-text-secondary hover:text-brand transition-colors font-body text-sm"
           >
-            <Target className="w-4 h-4" />
-            <span className="hidden sm:inline">TELOS</span>
+            <Compass className="w-4 h-4" />
+            <span className="hidden sm:inline">Purpose</span>
           </a>
           <a
-            href="https://mcp.daemon.danielmiessler.com"
+            href="https://brrh.lv"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 rounded-lg font-heading font-medium text-sm bg-brand/20 hover:bg-brand/30 text-brand border border-brand/30 transition-all duration-300"
+            className="px-4 py-2 rounded font-display text-sm tracking-wider bg-brand/20 hover:bg-brand/30 text-brand border border-brand/30 transition-all duration-300"
           >
-            MCP Endpoint
+            BRRH.LV
           </a>
         </div>
       </div>

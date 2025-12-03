@@ -1,73 +1,82 @@
 # TELOS Framework
 
-TELOS is my personal framework for tracking purpose and direction in life. It's a structured approach to understanding problems, defining missions, setting goals, and measuring progress.
-
-## Problems (P)
-
-The fundamental issues I see in the world that need addressing:
-
-### P1: People lack meaning in their lives
-- Modern society has disconnected us from purpose
-- Technology often increases isolation rather than connection
-- Work has become disconnected from personal values
-
-### P2: People are stuck in outdated hierarchical mindsets
-- 1950s organizational structures in a 2020s world
-- Command-and-control thinking in an age of networks
-- Resistance to distributed, collaborative models
-
-### P3: Humanity is unprepared for AI transformation
-- Lack of understanding about AI capabilities and limitations
-- No frameworks for human-AI collaboration
-- Risk of increasing inequality and displacement
-
-## Missions (M)
-
-My response to these problems through focused action:
-
-### M1: Increase human Eudaimonia (flourishing)
-- Create content that helps people find meaning
-- Build tools that augment human capability
-- Foster communities of growth and learning
-
-### M2: Build AI-augmented systems for human benefit
-- Develop frameworks like Fabric for AI augmentation
-- Create accessible tools for everyone
-- Focus on human-centric AI design
-
-### M3: Create frameworks for understanding complex systems
-- Simplify complexity without losing nuance
-- Build mental models for modern challenges
-- Share knowledge openly and freely
-
-## Goals (G)
-
-Specific, measurable outcomes I'm working toward:
-
-### G1: Reach 1M people with meaningful content
-- Grow Unsupervised Learning newsletter
-- Create viral, educational content
-- Build lasting resources
-
-### G2: Build tools that augment human capability
-- Fabric framework adoption
-- Daemon personal API system
-- Open source contributions
-
-### G3: Foster critical thinking and creativity
-- Educational content and courses
-- Community building
-- Mentorship and collaboration
-
-## Metrics (KPIs)
-
-How I measure progress:
-
-- **Reach**: Newsletter subscribers, content views, tool downloads
-- **Impact**: User testimonials, success stories, community growth
-- **Quality**: Depth of engagement, return visitors, active users
-- **Innovation**: New tools created, problems solved, frameworks developed
+A structured approach to understanding problems, defining missions, setting goals, and measuring progress.
 
 ---
 
-*TELOS is a living framework that evolves as I learn and grow. It's not about rigid adherence to a plan, but about having a north star to guide decisions and actions.*
+## Problems
+
+The fundamental issues I see in the world that need addressing.
+
+### P1: People lack clarity about themselves
+- Most don't know what they want or why
+- Living on autopilot without examining their direction
+- No framework for self-discovery and purpose
+
+### P2: People struggle to scale their growth
+- Learning feels like a chore rather than exploration
+- No systems for compounding personal development
+- Don't understand how the world really works
+
+### P3: Small businesses lack modern web solutions
+- Trapped in expensive agency contracts ($5K+ for basic sites)
+- DIY builders limit growth and flexibility
+- No ownership or control over their digital presence
+- Need affordable solutions they actually own
+
+---
+
+## Missions
+
+My response to these problems through focused action.
+
+### M1: Help people find clarity
+- Guide self-discovery through conversation and frameworks
+- Share what I learn about purpose and direction
+- Build tools that help people understand themselves better
+
+### M2: Provide clarity, trust, and control (AliraLink)
+- Payment systems that business owners actually understand
+- Transparency over fees and processes
+- Help them save time and keep more of their income
+
+### M3: Democratize professional web development
+- **Transparency:** Free template demos so prospects see exactly what they're getting
+- **Ownership:** GitHub-based development - clients own their code and can leave anytime
+- **Affordability:** $500 setup (vs $5K+ agencies) with optional maintenance
+- **Modern Stack:** Headless WordPress/WooCommerce + Vercel for fast, scalable sites
+
+---
+
+## Narratives
+
+The stories I tell myself about who I am.
+
+### N1: The Possibility Spotter
+I see the potential in things before they exist - in people, in ideas, in businesses. What looks like chaos to others, I see as a canvas. My gift is making the invisible visible, translating "what if" into "here's how."
+
+### N2: The Creative Catalyst
+Every problem is an adventure in disguise. I don't just solve things - I help people see constraints as creative challenges. The energy of figuring things out, exploring possibilities together, building something new - that's where I come alive.
+
+### N3: The Deep Connector
+Real work happens in real relationship. I build things WITH people, not FOR them. The collaboration itself matters. I'd rather win together than succeed alone - the journey is as important as the destination.
+
+### Core Thread
+I'm an explorer at heart - of ideas, cultures, possibilities. I teach what I discover. I build with those going the same direction. The web is my medium. Connection is my purpose.
+
+---
+
+## Metrics
+
+How I measure progress.
+
+| Metric | What It Measures |
+|--------|-----------------|
+| **Reach** | Content views, tool usage, people helped |
+| **Impact** | Success stories, client outcomes, real change |
+| **Quality** | Depth of engagement, return visitors, referrals |
+| **Innovation** | New tools created, problems solved, frameworks developed |
+
+---
+
+*TELOS is a living framework that evolves as I learn and grow. The point isn't rigid adherence - it's having a north star to guide decisions and actions.*
