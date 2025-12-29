@@ -3,10 +3,10 @@ main = "src/worker.ts"
 compatibility_date = "2025-08-20"
 workers_dev = true
 
-# Custom domain route
-routes = [
-  { pattern = "daemon.danielmiessler.com", custom_domain = true }
-]
+# Custom domain route (update with your domain)
+# routes = [
+#   { pattern = "daemon.yourdomain.com", custom_domain = true }
+# ]
 
 [site]
 bucket = "./dist"
