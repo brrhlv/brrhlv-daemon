@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>brrhlv-daemon Design Mockups | v4 Brand</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Code:wght@400;500&family=Fira+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========================================
+       brrhlv v4 Brand System - CSS Variables
+       ======================================== */
+    :root {
+      /* Primary Purple */
+      --purple-light: #9061F9;
+      --purple: #7C3AED;
+      --purple-dark: #5B21B6;
+
+      /* Secondary Burgundy */
+      --burgundy: #881337;
+
+      /* Neutral Steel */
+      --steel-light: #D4D4D8;
+      --steel: #A1A1AA;
+      --steel-dark: #52525B;
+
+      /* Background */
+      --bg: #0C0C0F;
+      --bg-elevated: #18181B;
+      --bg-border: #27272A;
+
+      /* Semantic */
+      --success: #9CB92C; /* Peridot - Bryan's birthstone */
+      --error: #EF4444;
+      --warning: #F59E0B;
+
+      /* Glow Effects */
+      --glow-action: 0 0 12px rgba(144, 97, 249, 0.5);
+      --glow-subtle: 0 0 8px rgba(161, 161, 170, 0.12);
+      --glow-peridot: 0 0 8px rgba(156, 185, 44, 0.5);
+
+      /* Motion */
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+      --duration-micro: 150ms;
+      --duration-standard: 300ms;
+      --duration-emphasis: 500ms;
+
+      /* Typography */
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Fira Sans', sans-serif;
+      --font-mono: 'Fira Code', monospace;
+    }
+
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--steel-light);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ========================================
+       Section Wrapper
+       ======================================== */
+    .mockup-section {
+      padding: 3rem 2rem;
+      border-bottom: 1px solid var(--bg-border);
+    }
+
+    .mockup-section h2 {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      color: var(--steel-dark);
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .mockup-section h2 span {
+      color: var(--purple-light);
+    }
+
+    /* ========================================
+       01 // Status Bar Navigation
+       ======================================== */
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+      border-radius: 0.25rem;
+    }
+
+    .status-bar__brand {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--steel-light);
+    }
+
+    .status-bar__brand .protocol {
+      color: var(--purple-light);
+    }
+
+    .status-bar__nav {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .status-bar__nav a {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--steel);
+      text-decoration: none;
+      transition: color var(--duration-micro) var(--ease-smooth);
+    }
+
+    .status-bar__nav a:hover {
+      color: var(--purple-light);
+      text-shadow: var(--glow-action);
+    }
+
+    .status-bar__status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--steel-dark);
+    }
+
+    .status-bar__status .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      box-shadow: var(--glow-peridot);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* ========================================
+       02 // Hero Section
+       ======================================== */
+    .hero {
+      position: relative;
+      padding: 6rem 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Scan lines effect */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(124, 58, 237, 0.02) 2px,
+        rgba(124, 58, 237, 0.02) 4px
+      );
+      pointer-events: none;
+      animation: scanlines 8s linear infinite;
+    }
+
+    @keyframes scanlines {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(4px); }
+    }
+
+    /* Grid pattern overlay */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(124, 58, 237, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124, 58, 237, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: 8rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--steel-light);
+      text-shadow: 0 0 60px rgba(124, 58, 237, 0.3);
+      margin-bottom: 1rem;
+    }
+
+    .hero__subtitle {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--steel);
+      margin-bottom: 2rem;
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+      border-radius: 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--steel);
+    }
+
+    .hero__badge .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--success);
+      border-radius: 50%;
+      box-shadow: var(--glow-peridot);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .hero__version {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--steel-dark);
+    }
+
+    /* ========================================
+       03 // Dashboard Cards
+       ======================================== */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      position: relative;
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+      border-left: 3px solid var(--purple);
+      border-radius: 0.25rem;
+      padding: 1.5rem;
+      transition: all var(--duration-standard) var(--ease-smooth);
+    }
+
+    .card:hover {
+      border-left-color: var(--purple-light);
+      box-shadow: var(--glow-subtle), 0 4px 20px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .card:hover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), transparent);
+      border-radius: 0.25rem;
+      pointer-events: none;
+    }
+
+    .card__header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .card__icon {
+      width: 24px;
+      height: 24px;
+      color: var(--purple-light);
+    }
+
+    .card__title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--steel-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .card__content {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--steel-light);
+      line-height: 1.6;
+    }
+
+    .card__content .highlight {
+      color: var(--purple-light);
+    }
+
+    .card__meta {
+      margin-top: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--steel-dark);
+    }
+
+    /* ========================================
+       04 // Color System Display
+       ======================================== */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .color-group {
+      background: var(--bg-elevated);
+      border: 1px solid var(--bg-border);
+      border-radius: 0.25rem;
+      padding: 1rem;
+    }
+
+    .color-group__title {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      color: var(--steel-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.75rem;
+    }
+
+    .color-swatch {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+    }
+
+    .color-swatch__preview {
+      width: 32px;
+      height: 32px;
+      border-radius: 0.25rem;
+      border: 1px solid var(--bg-border);
+    }
+
+    .color-swatch__info {
+      flex: 1;
+    }
+
+    .color-swatch__name {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--steel-light);
+    }
+
+    .color-swatch__hex {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--steel-dark);
+    }
+
+    .color-swatch__badge {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      padding: 0.125rem 0.375rem;
+      background: var(--bg);
+      border: 1px solid var(--bg-border);
+      border-radius: 0.125rem;
+      color: var(--steel-dark);
+    }
+
+    /* ========================================
+       05 // UI Components
+       ======================================== */
+    .components-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .component-group {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .component-group__title {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      color: var(--steel-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 1rem;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      transition: all var(--duration-micro) var(--ease-smooth);
+    }
+
+    .btn--primary {
+      background: var(--purple);
+      color: white;
+    }
+
+    .btn--primary:hover {
+      background: var(--purple-light);
+      box-shadow: var(--glow-action);
+    }
+
+    .btn--secondary {
+      background: transparent;
+      color: var(--purple-light);
+      border: 1px solid var(--purple);
+    }
+
+    .btn--secondary:hover {
+      background: rgba(124, 58, 237, 0.1);
+      border-color: var(--purple-light);
+    }
+
+    .btn--disabled {
+      background: var(--bg-border);
+      color: var(--steel-dark);
+      cursor: not-allowed;
+    }
+
+    .buttons-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Links */
+    .link {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--purple-light);
+      text-decoration: none;
+      transition: all var(--duration-micro) var(--ease-smooth);
+    }
+
+    .link:hover {
+      color: var(--steel-light);
+      text-shadow: var(--glow-action);
+    }
+
+    .links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    /* Code Block */
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--bg-border);
+      border-radius: 0.25rem;
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      overflow-x: auto;
+    }
+
+    .code-block .keyword { color: var(--purple-light); }
+    .code-block .string { color: var(--success); }
+    .code-block .comment { color: var(--steel-dark); }
+    .code-block .function { color: var(--steel-light); }
+
+    /* ========================================
+       06 // Typography Scale
+       ======================================== */
+    .type-scale {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .type-sample {
+      display: flex;
+      align-items: baseline;
+      gap: 2rem;
+    }
+
+    .type-sample__label {
+      flex: 0 0 120px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--steel-dark);
+    }
+
+    .type-sample--display {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: var(--steel-light);
+    }
+
+    .type-sample--h1 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--steel-light);
+    }
+
+    .type-sample--h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--steel-light);
+    }
+
+    .type-sample--body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--steel);
+    }
+
+    .type-sample--mono {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      color: var(--purple-light);
+    }
+
+    /* ========================================
+       Footer
+       ======================================== */
+    .footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--steel-dark);
+    }
+
+    .footer a {
+      color: var(--purple-light);
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-shadow: var(--glow-action);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 01 // Status Bar Navigation -->
+  <section class="mockup-section">
+    <h2><span>01</span> // Status Bar Navigation</h2>
+    <div class="status-bar">
+      <div class="status-bar__brand">
+        <span class="protocol">DAEMON://</span>BRRH
+      </div>
+      <nav>
+        <ul class="status-bar__nav">
+          <li><a href="#">ABOUT</a></li>
+          <li><a href="#">API</a></li>
+          <li><a href="#">CONTACT</a></li>
+        </ul>
+      </nav>
+      <div class="status-bar__status">
+        <span class="dot"></span>
+        <span>CONNECTED</span>
+        <span>v1.0.0</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 // Hero Section -->
+  <section class="mockup-section">
+    <h2><span>02</span> // Hero Section</h2>
+    <div class="hero">
+      <div class="hero__content">
+        <h1 class="hero__title">DAEMON</h1>
+        <p class="hero__subtitle">Personal API for Human Connection</p>
+        <div class="hero__badge">
+          <span class="dot"></span>
+          <span>LIVE</span>
+        </div>
+      </div>
+      <div class="hero__version">v1.0.0</div>
+    </div>
+  </section>
+
+  <!-- 03 // Dashboard Cards -->
+  <section class="mockup-section">
+    <h2><span>03</span> // Dashboard Cards</h2>
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card__header">
+          <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          <span class="card__title">Location</span>
+        </div>
+        <div class="card__content">
+          <span class="highlight">Las Vegas, Nevada</span><br>
+          Home base
+        </div>
+        <div class="card__meta">Updated 2h ago</div>
+      </div>
+
+      <div class="card">
+        <div class="card__header">
+          <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+          <span class="card__title">Mission</span>
+        </div>
+        <div class="card__content">
+          Building bridges between <span class="highlight">technology</span> and <span class="highlight">human connection</span>. Web strategy that drives real growth.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__header">
+          <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+          <span class="card__title">Currently Reading</span>
+        </div>
+        <div class="card__content">
+          "<span class="highlight">The Beginning of Infinity</span>"<br>
+          by David Deutsch
+        </div>
+        <div class="card__meta">Started Nov 2024</div>
+      </div>
+
+      <div class="card">
+        <div class="card__header">
+          <svg class="card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+          <span class="card__title">Working On</span>
+        </div>
+        <div class="card__content">
+          Primary: <span class="highlight">Kai</span> personal AI<br>
+          Secondary: Client web projects<br>
+          Exploring: MCP integrations
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 04 // Color System -->
+  <section class="mockup-section">
+    <h2><span>04</span> // Color System (v4)</h2>
+    <div class="color-grid">
+
+      <div class="color-group">
+        <div class="color-group__title">Primary Purple</div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #9061F9;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Purple Light</div>
+            <div class="color-swatch__hex">#9061F9</div>
+          </div>
+          <span class="color-swatch__badge">5.5:1</span>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #7C3AED;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Purple</div>
+            <div class="color-swatch__hex">#7C3AED</div>
+          </div>
+          <span class="color-swatch__badge">4.1:1</span>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #5B21B6;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Purple Dark</div>
+            <div class="color-swatch__hex">#5B21B6</div>
+          </div>
+          <span class="color-swatch__badge">depth</span>
+        </div>
+      </div>
+
+      <div class="color-group">
+        <div class="color-group__title">Neutral Steel</div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #D4D4D8;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Steel Light</div>
+            <div class="color-swatch__hex">#D4D4D8</div>
+          </div>
+          <span class="color-swatch__badge">13.2:1</span>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #A1A1AA;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Steel</div>
+            <div class="color-swatch__hex">#A1A1AA</div>
+          </div>
+          <span class="color-swatch__badge">7.8:1</span>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #52525B;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Steel Dark</div>
+            <div class="color-swatch__hex">#52525B</div>
+          </div>
+          <span class="color-swatch__badge">18px+</span>
+        </div>
+      </div>
+
+      <div class="color-group">
+        <div class="color-group__title">Background</div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #0C0C0F; border: 1px solid #27272A;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Background</div>
+            <div class="color-swatch__hex">#0C0C0F</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #18181B;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Elevated</div>
+            <div class="color-swatch__hex">#18181B</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #27272A;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Border</div>
+            <div class="color-swatch__hex">#27272A</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-group">
+        <div class="color-group__title">Semantic</div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #9CB92C;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Success (Peridot)</div>
+            <div class="color-swatch__hex">#9CB92C</div>
+          </div>
+          <span class="color-swatch__badge">birthstone</span>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #EF4444;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Error</div>
+            <div class="color-swatch__hex">#EF4444</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #881337;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Burgundy</div>
+            <div class="color-swatch__hex">#881337</div>
+          </div>
+          <span class="color-swatch__badge">decorative</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 05 // UI Components -->
+  <section class="mockup-section">
+    <h2><span>05</span> // UI Components</h2>
+    <div class="components-row">
+
+      <div class="component-group">
+        <div class="component-group__title">Buttons</div>
+        <div class="buttons-row">
+          <button class="btn btn--primary">Primary</button>
+          <button class="btn btn--secondary">Secondary</button>
+          <button class="btn btn--disabled" disabled>Disabled</button>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <div class="component-group__title">Links</div>
+        <div class="links-list">
+          <a href="#" class="link">View API Documentation</a>
+          <a href="#" class="link">Connect with brrhlv</a>
+          <a href="#" class="link">Source Code on GitHub</a>
+        </div>
+      </div>
+
+      <div class="component-group">
+        <div class="component-group__title">Code Block</div>
+        <pre class="code-block"><span class="comment">// Query the daemon API</span>
+<span class="keyword">const</span> <span class="function">response</span> = <span class="keyword">await</span> fetch(<span class="string">'https://daemon.brrh.lv/api'</span>);
+<span class="keyword">const</span> <span class="function">data</span> = <span class="keyword">await</span> response.json();</pre>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 06 // Typography Scale -->
+  <section class="mockup-section">
+    <h2><span>06</span> // Typography Scale</h2>
+    <div class="type-scale">
+      <div class="type-sample">
+        <span class="type-sample__label">Display</span>
+        <span class="type-sample--display">DAEMON</span>
+      </div>
+      <div class="type-sample">
+        <span class="type-sample__label">Heading 1</span>
+        <span class="type-sample--h1">PERSONAL API</span>
+      </div>
+      <div class="type-sample">
+        <span class="type-sample__label">Heading 2</span>
+        <span class="type-sample--h2">CURRENTLY READING</span>
+      </div>
+      <div class="type-sample">
+        <span class="type-sample__label">Body</span>
+        <span class="type-sample--body">Building bridges between technology and human connection.</span>
+      </div>
+      <div class="type-sample">
+        <span class="type-sample__label">Monospace</span>
+        <span class="type-sample--mono">DAEMON://BRRH v1.0.0</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    brrhlv-daemon Design System | v4 Brand | <a href="https://brrh.lv">brrh.lv</a>
+  </footer>
+
+</body>
+</html>

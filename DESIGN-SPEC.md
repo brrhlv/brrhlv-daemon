@@ -1,82 +1,99 @@
-# Daemon Redesign - Design Specification
+# Daemon Redesign - Design Specification v4
 
-**Generated:** 2024-12-03
+**Updated:** 2024-12-29
+**Brand Version:** brrhlv v4 Clarity Edition
 **Industry:** Personal / Tech
 **Mood:** Cyberpunk Terminal + brrhlv Brand
-**Tier:** Demo (quick mode)
 **Primary Goal:** Personal API interface
 
 ---
 
 ## Design Direction
 
-**Concept:** Cyberpunk tech terminal with the same brand colors and feel as brrhlv.com
+**Concept:** Cyberpunk tech terminal with brrhlv brand identity
 
 Merging:
 - The **terminal/dashboard aesthetic** of the original Daemon
-- The **purple/burgundy cyberpunk goth** palette from brrhlv
+- The **purple/burgundy cyberpunk goth** palette from brrhlv v4
 - **Monospace typography** for the terminal feel
 - **Scan lines and glow effects** from brrhlv hero
 
 ---
 
-## Color Palette
+## Color Palette (v4 Brand System)
 
-### From brrhlv Brand
+**Color Hierarchy:** Dark 40% | Purple 30% | Steel 20% | Burgundy 10%
+
+### Primary Purple
 ```css
---color-primary: #7C3AED;      /* Purple - main */
---color-secondary: #881337;    /* Burgundy - subtle accent */
---color-accent: #A78BFA;       /* Light purple */
---color-dark: #0A0A0A;         /* Near black */
---color-darker: #050505;       /* True dark */
---color-light: #F5F5F5;        /* Off white */
---color-muted: #71717A;        /* Gray */
---color-text: #A3A3A3;         /* Light gray text */
+--purple-light: #9061F9;    /* 5.5:1 - Text, links, interactive */
+--purple: #7C3AED;          /* 4.1:1 - Non-text accents, borders, icons */
+--purple-dark: #5B21B6;     /* Pressed states, depth */
 ```
 
-### Terminal Palette (Derived)
+### Secondary Burgundy
 ```css
-/* Background - Dark with purple tint */
---color-bg-primary: #0A0A0F;
---color-bg-secondary: #12121A;
---color-bg-tertiary: #1A1A24;
---color-bg-elevated: #22222E;
-
-/* Text - Purple-tinted grays */
---color-text-primary: #E8E4F0;
---color-text-secondary: #B8B4C4;
---color-text-tertiary: #6E6A7A;
-
-/* Borders */
---color-border-subtle: rgba(124, 58, 237, 0.15);
---color-border-default: rgba(124, 58, 237, 0.3);
---color-border-emphasis: rgba(167, 139, 250, 0.5);
-
-/* Glow */
---color-brand-glow: rgba(124, 58, 237, 0.4);
+--burgundy: #881337;        /* Gradients, decorative only. NEVER for text */
 ```
+
+### Neutral Steel
+```css
+--steel-light: #D4D4D8;     /* 13.2:1 - Headlines, primary text */
+--steel: #A1A1AA;           /* 7.8:1 - Body text, secondary */
+--steel-dark: #52525B;      /* 3.4:1 - Large text only (18px+), muted */
+```
+
+### Background
+```css
+--bg: #0C0C0F;              /* Primary background */
+--bg-elevated: #18181B;     /* Cards, modals */
+--bg-border: #27272A;       /* Dividers, borders */
+```
+
+### Semantic States
+```css
+--success: #9CB92C;         /* Peridot - Bryan's birthstone */
+--error: #EF4444;           /* Errors, destructive actions */
+--warning: #F59E0B;         /* Cautions, alerts */
+```
+
+---
+
+## Accessibility Rules
+
+| Context | Minimum Contrast | Approved Colors |
+|---------|-----------------|-----------------|
+| Body text (any size) | 4.5:1 | Steel Light, Steel, Purple Light |
+| Large text (18px+) | 3:1 | + Steel Dark |
+| Non-text (icons, borders) | 3:1 | Any except Burgundy on dark |
+| Decorative only | None | Burgundy, Purple Dark |
 
 ---
 
 ## Typography
 
 ### Fonts
-- **Display/Headers:** Bebas Neue (matching brrhlv)
-- **Body:** Fira Sans (matching brrhlv)
-- **Monospace/Terminal:** Fira Code or JetBrains Mono (for terminal aesthetic)
+- **Display/Headers:** Bebas Neue (bold, condensed, all-caps vibe)
+- **Body:** Fira Sans (clean, readable, technical)
+- **Monospace/Terminal:** Fira Code (for terminal aesthetic)
 
 ### Hierarchy
-- **Status Bar Label:** Bebas Neue, 1rem, letter-spacing 0.1em
-- **Section Headers:** Bebas Neue, 1.25rem, uppercase
-- **Body Text:** Fira Sans, 0.9rem
-- **Terminal/Code:** Fira Code, 0.85rem, monospace
+| Element | Font | Size | Color |
+|---------|------|------|-------|
+| Display Title | Bebas Neue | 8rem | Steel Light |
+| Status Bar Label | Fira Code | 1rem | Steel Light |
+| Section Headers | Fira Code | 0.75rem | Steel Dark |
+| Body Text | Fira Sans | 1rem | Steel |
+| Terminal/Code | Fira Code | 0.875rem | Purple Light |
+| Meta/Timestamp | Fira Code | 0.75rem | Steel Dark |
 
 ---
 
 ## Layout
 
-### Structure (Keep existing)
+### Structure
 - Full-width status bar at top
+- Hero section with DAEMON title
 - 2-column grid for Mission/Purpose
 - 3-column grid for Books/Movies/Podcasts
 - 3-column grid for Preferences/Routine/Projects
@@ -91,70 +108,88 @@ Merging:
 
 ## Visual Effects
 
-### From brrhlv (Apply to Daemon)
-1. **Scan lines:** Subtle horizontal lines overlay (opacity 0.02)
-2. **Glow effects:** Purple glow on hover/active states
-3. **Gradient backgrounds:** Subtle radial gradients with purple
-4. **Vignette:** Edge darkening on main container
+### Glow Effects (2-Type System)
+```css
+--glow-action: 0 0 12px rgba(144, 97, 249, 0.5);  /* Buttons, links on hover */
+--glow-subtle: 0 0 8px rgba(161, 161, 170, 0.12); /* Cards, ambient elements */
+--glow-peridot: 0 0 8px rgba(156, 185, 44, 0.5);  /* Success states */
+```
 
-### Terminal Elements
-1. **Status indicators:** Pulsing dots (green/red)
-2. **Monospace labels:** All section headers in mono
-3. **Grid background:** Subtle grid pattern (purple-tinted)
-4. **Typing effect:** Optional on status bar
+### Motion
+```css
+--ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+--duration-micro: 150ms;     /* Hover states, small changes */
+--duration-standard: 300ms;  /* Most UI transitions */
+--duration-emphasis: 500ms;  /* Page transitions, reveals */
+```
+
+### Terminal Effects
+1. **Scan lines:** Subtle horizontal lines overlay (purple at 2% opacity)
+2. **Grid pattern:** 50px grid with purple at 3% opacity
+3. **Vignette:** Edge darkening on main container
 
 ---
 
-## Component Updates
+## Component Specifications
 
 ### StatusBar
-- Change "DAEMON://MIESSLER" → "DAEMON://BRRH"
-- Use Bebas Neue for the label
-- Purple accent color instead of cyan
-- Keep the connection status indicator
+- Brand: `DAEMON://BRRH` (protocol in purple-light)
+- Font: Fira Code 1rem
+- Background: bg-elevated (#18181B)
+- Border: bg-border (#27272A)
+- Status indicator: Peridot (#9CB92C) with pulse animation
 
 ### Cards
-- Dark background with purple border (subtle)
-- Purple accent on icons
-- Hover: subtle glow effect
-- Rounded corners: 0.25rem (more angular)
+- Background: bg-elevated (#18181B)
+- Border: bg-border (#27272A)
+- Left accent: 3px purple (#7C3AED)
+- Hover: purple-light border, subtle glow, translateY(-2px)
+- Border radius: 0.25rem (angular)
 
 ### Hero
-- Minimal - just the status bar + title
-- "DAEMON" in Bebas Neue
-- Tagline: "Personal API for Human + AI Context"
-- Purple gradient text effect
+- Title: "DAEMON" in Bebas Neue 8rem
+- Subtitle: "Personal API for Human Connection"
+- LIVE badge: Peridot dot + pill border
+- Text shadow: `0 0 60px rgba(124, 58, 237, 0.3)`
+
+### Buttons
+| Type | Background | Text | Hover |
+|------|------------|------|-------|
+| Primary | purple | white | purple-light + glow |
+| Secondary | transparent | purple-light | purple 10% bg |
+| Disabled | bg-border | steel-dark | none |
 
 ---
 
-## Animations
+## Iconography
 
-### Keep Subtle
-- Fade in cards with stagger (0.05s delay each)
-- Pulse on status indicators
-- Hover transitions (0.2s)
-- No complex animations
-
----
-
-## Implementation Priority
-
-1. Update `global.css` with new color scheme
-2. Update font imports (Bebas Neue, Fira Sans, Fira Code)
-3. Update StatusBar branding
-4. Update card styling to match brrhlv
-5. Add scan line + glow effects
-6. Test and refine
+- **Library:** Phosphor Icons (phosphoricons.com)
+- **Style:** Minimal, line-based
+- **Size:** 24x24 for cards
+- **Stroke:** 1.5px
+- **Color:** Purple Light (#9061F9)
 
 ---
 
-## Ready for Implementation
+## Implementation Checklist
 
-- [x] Color palette defined
+- [x] Color palette defined (v4)
 - [x] Typography selected
 - [x] Layout preserved
 - [x] Effects specified
+- [x] Accessibility rules documented
+- [x] Design mockups created
+- [ ] CSS variables updated
+- [ ] Components restyled
 - [ ] User approved
 
 ---
-*Generated by design-research orchestrator*
+
+## Reference Files
+
+- **Design Mockups:** `design-mockups.html`
+- **Brand Source:** `~/.claude/skills/brrhlv-brand/SKILL.md`
+- **Live Brand:** https://brrh.lv
+
+---
+*Updated to brrhlv v4 Clarity Edition*
