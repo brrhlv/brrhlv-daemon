@@ -68,8 +68,8 @@
 
 /* Base Styles */
 html {
-  background-color: var(--color-bg);
-  color: var(--color-steel-light);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -82,8 +82,8 @@ body {
 
 /* Selection */
 ::selection {
-  background-color: var(--color-purple);
-  color: var(--color-bg);
+  background-color: var(--color-brand);
+  color: var(--color-bg-primary);
 }
 
 /* Scrollbar */
@@ -93,21 +93,19 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-bg-elevated);
+  background: var(--color-bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-bg-border);
+  background: var(--color-border-default);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-purple);
+  background: var(--color-brand);
 }
 
-/* ========================================
-   Typography Utilities
-   ======================================== */
+/* Utility Classes */
 .font-display {
   font-family: var(--font-display);
   letter-spacing: 0.04em;
@@ -128,24 +126,20 @@ body {
 
 /* Text Gradients */
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-purple-light) 0%, var(--color-purple) 50%, var(--color-purple-dark) 100%);
+  background: linear-gradient(135deg, var(--color-brand-light) 0%, var(--color-brand) 50%, var(--color-brand-dark) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-accent {
-  background: linear-gradient(135deg, var(--color-purple-light) 0%, var(--color-purple) 100%);
+  background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-accent) 50%, var(--color-accent-dark) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ========================================
-   Visual Effects
-   ======================================== */
-
-/* Scan Line Effect */
+/* Scan Line Effect (from brrhlv) */
 .bg-scanlines {
   position: relative;
 }
@@ -158,16 +152,11 @@ body {
     0deg,
     transparent,
     transparent 2px,
-    rgba(124, 58, 237, 0.02) 2px,
-    rgba(124, 58, 237, 0.02) 4px
+    rgba(255, 255, 255, 0.03) 2px,
+    rgba(255, 255, 255, 0.03) 4px
   );
   pointer-events: none;
-  animation: scanlines 8s linear infinite;
-}
-
-@keyframes scanlines {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(4px); }
+  opacity: 0.5;
 }
 
 /* Noise Texture */
@@ -184,49 +173,38 @@ body {
   pointer-events: none;
 }
 
+/* Glow Effects */
+.glow {
+  box-shadow: 0 0 40px var(--color-brand-glow);
+}
+
+.glow-sm {
+  box-shadow: 0 0 20px var(--color-brand-glow);
+}
+
+.glow-text {
+  text-shadow: 0 0 40px var(--color-brand-glow);
+}
+
+/* Card Glow on Hover */
+.card-glow {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-glow:hover {
+  box-shadow: 0 0 30px var(--color-brand-glow);
+  border-color: var(--color-border-emphasis);
+}
+
 /* Grid Background */
 .bg-grid {
   background-image:
     linear-gradient(rgba(124, 58, 237, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(124, 58, 237, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background-size: 40px 40px;
 }
 
-/* ========================================
-   Glow Effects
-   ======================================== */
-.glow {
-  box-shadow: var(--glow-action);
-}
-
-.glow-subtle {
-  box-shadow: var(--glow-subtle);
-}
-
-.glow-sm {
-  box-shadow: 0 0 20px rgba(144, 97, 249, 0.3);
-}
-
-.glow-text {
-  text-shadow: 0 0 40px rgba(124, 58, 237, 0.3);
-}
-
-/* Card Glow on Hover */
-.card-glow {
-  transition: box-shadow var(--duration-standard) var(--ease-smooth),
-              border-color var(--duration-standard) var(--ease-smooth),
-              transform var(--duration-standard) var(--ease-smooth);
-}
-
-.card-glow:hover {
-  box-shadow: var(--glow-subtle), 0 4px 20px rgba(0, 0, 0, 0.3);
-  border-color: var(--color-purple);
-  transform: translateY(-2px);
-}
-
-/* ========================================
-   Animated Background Orbs
-   ======================================== */
+/* Animated Background Orbs */
 .bg-orb {
   position: absolute;
   border-radius: 50%;
@@ -238,14 +216,14 @@ body {
 .bg-orb-purple {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(144, 97, 249, 0.4) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--color-brand-glow) 0%, transparent 70%);
   animation: orb-float-1 15s ease-in-out infinite;
 }
 
 .bg-orb-burgundy {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, var(--color-burgundy-glow) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--color-secondary-glow) 0%, transparent 70%);
   animation: orb-float-2 18s ease-in-out infinite;
 }
 
@@ -275,11 +253,7 @@ body {
   }
 }
 
-/* ========================================
-   Animations
-   ======================================== */
-
-/* Pulse Animation (for status indicators) */
+/* Pulse Animation */
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
@@ -299,9 +273,7 @@ body {
   animation: blink 1s step-end infinite;
 }
 
-/* ========================================
-   Status Indicators
-   ======================================== */
+/* Status Indicator */
 .status-dot {
   width: 8px;
   height: 8px;
@@ -310,7 +282,7 @@ body {
 
 .status-dot-connected {
   background-color: var(--color-success);
-  box-shadow: var(--glow-peridot);
+  box-shadow: 0 0 8px var(--color-success);
 }
 
 .status-dot-offline {
@@ -318,9 +290,20 @@ body {
   box-shadow: 0 0 8px var(--color-error);
 }
 
-/* ========================================
-   Vignette Effect
-   ======================================== */
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .bg-orb,
+  .bg-orb-purple,
+  .bg-orb-burgundy {
+    animation: none;
+  }
+  .animate-pulse-slow,
+  .animate-blink {
+    animation: none;
+  }
+}
+
+/* Vignette Effect */
 .vignette {
   position: relative;
 }
@@ -329,25 +312,6 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 40%, var(--color-bg) 100%);
+  background: radial-gradient(ellipse at center, transparent 40%, var(--color-bg-primary) 100%);
   pointer-events: none;
-}
-
-/* ========================================
-   Reduced Motion
-   ======================================== */
-@media (prefers-reduced-motion: reduce) {
-  .bg-orb,
-  .bg-orb-purple,
-  .bg-orb-burgundy,
-  .bg-scanlines::before {
-    animation: none;
-  }
-  .animate-pulse-slow,
-  .animate-blink {
-    animation: none;
-  }
-  .card-glow {
-    transition: none;
-  }
 }

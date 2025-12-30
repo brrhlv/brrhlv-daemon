@@ -1,0 +1,52 @@
+---
+import '../styles/global.css'
+import { Background } from '../components/Background';
+import { Nav } from '../components/Nav';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Personal API for Bryan Rivera - Real-time access to who I am, what I\'m building, and what I care about' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://daemon-eight.vercel.app/og-image.png" />
+    <meta property="og:url" content="https://daemon-eight.vercel.app" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://daemon-eight.vercel.app/og-image.png" />
+
+    <title>{title}</title>
+  </head>
+  <body class="bg-bg-primary min-h-screen overflow-x-hidden">
+    <Background client:load />
+    <Nav client:load />
+    <slot />
+
+    <!-- Footer with credit -->
+    <footer class="relative z-10 border-t border-border-subtle py-8 px-6 mt-12">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="font-body text-sm text-text-tertiary">
+          Built with the <a href="https://github.com/danielmiessler/daemon" class="text-brand hover:text-brand-light transition-colors">Daemon</a> framework by <a href="https://danielmiessler.com" class="text-brand hover:text-brand-light transition-colors">Daniel Miessler</a>. Thank you for the inspiration.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
